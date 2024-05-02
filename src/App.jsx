@@ -1,134 +1,147 @@
 import { useState } from "react";
-
 function App() {
   const [vzory, setVzory] = useState(true);
+  const handleVzory = () => setVzory((prevState) => !prevState);
 
-  const handleVzory = () => setVzory(prevState => !prevState);
+  const [menuClicked, setMenuClicked] = useState(false);
+  const [settingsClicked, setSettingsClicked] = useState(false);
+
+  const handleSettingsClicked = () => setMenuClicked((prevState) => !prevState);
+  const handleMenuClicked = () => setSettingsClicked((prevState) => !prevState);
 
   return (
     <>
-      <h1>DEUTSCH</h1>
-      <div className="card ">
-      <button>all</button>
-      <button onClick={handleVzory}>vzory</button>
-      <button>pravidla</button>
-      <button>spojky</button>
+      <div className="head">
+        <div className="settings" onClick={handleSettingsClicked}></div>
+        <h1>DEUTSCH</h1>
+        <div className="menu" onClick={handleMenuClicked}></div>
       </div>
-      {vzory && <div className="card-group">
-        <div className="card">
-          <table className="masculine">
-            <thead>
-              <th colSpan={3}>masculine</th>
-            </thead>
-            <tbody>
-              <tr className="nominative">
-                <td>1.</td>
-                <td>DER</td>
-                <td>EIN</td>
-              </tr>
-              <tr className="genitive">
-                <td>2.</td>
-                <td>DES (ES)</td>
-                <td>EINES (ES)</td>
-              </tr>
-              <tr className="dative">
-                <td>3.</td>
-                <td>DEM</td>
-                <td>EINEM</td>
-              </tr>
-              <tr className="accusative">
-                <td>4.</td>
-                <td>DEN</td>
-                <td>EINEN</td>
-              </tr>
-            </tbody>
-          </table>
+      {menuClicked && (
+        <div className="menu-area">
+          <button>all</button>
+          <button onClick={handleVzory}>vzory</button>
+          <button>pravidla</button>
+          <button>spojky</button>
         </div>
-        <div className="card">
-          <table className="feminine">
-            <thead>
-              <th colSpan={3}>feminine</th>
-            </thead>
-            <tbody>
-              <tr className="nominative">
-                <td>1.</td>
-                <td>DIE</td>
-                <td>EINE</td>
-              </tr>
-              <tr className="genitive">
-                <td>2.</td>
-                <td>DER</td>
-                <td>EINER</td>
-              </tr>
-              <tr className="dative">
-                <td>3.</td>
-                <td>DER</td>
-                <td>EINER</td>
-              </tr>
-              <tr className="accusative">
-                <td>4.</td>
-                <td>DIE</td>
-                <td>EINE</td>
-              </tr>
-            </tbody>
-          </table>
+      )}
+      {settingsClicked && <div className="settings-area"></div>}
+
+      {vzory && (
+        <div className="card-group">
+          <div className="card">
+            <table className="masculine">
+              <thead>
+                <th colSpan={3}>masculine</th>
+              </thead>
+              <tbody>
+                <tr className="nominative">
+                  <td>1.</td>
+                  <td>DER</td>
+                  <td>EIN</td>
+                </tr>
+                <tr className="genitive">
+                  <td>2.</td>
+                  <td>DES (ES)</td>
+                  <td>EINES (ES)</td>
+                </tr>
+                <tr className="dative">
+                  <td>3.</td>
+                  <td>DEM</td>
+                  <td>EINEM</td>
+                </tr>
+                <tr className="accusative">
+                  <td>4.</td>
+                  <td>DEN</td>
+                  <td>EINEN</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="card">
+            <table className="feminine">
+              <thead>
+                <th colSpan={3}>feminine</th>
+              </thead>
+              <tbody>
+                <tr className="nominative">
+                  <td>1.</td>
+                  <td>DIE</td>
+                  <td>EINE</td>
+                </tr>
+                <tr className="genitive">
+                  <td>2.</td>
+                  <td>DER</td>
+                  <td>EINER</td>
+                </tr>
+                <tr className="dative">
+                  <td>3.</td>
+                  <td>DER</td>
+                  <td>EINER</td>
+                </tr>
+                <tr className="accusative">
+                  <td>4.</td>
+                  <td>DIE</td>
+                  <td>EINE</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="card">
+            <table className="neuter">
+              <thead>
+                <th colSpan={3}>neuter</th>
+              </thead>
+              <tbody>
+                <tr className="nominative">
+                  <td>1.</td>
+                  <td>DAS</td>
+                  <td>EIN</td>
+                </tr>
+                <tr className="genitive">
+                  <td>2.</td>
+                  <td>DES (ES)</td>
+                  <td>EINES (ES)</td>
+                </tr>
+                <tr className="dative">
+                  <td>3.</td>
+                  <td>DEM</td>
+                  <td>EINEM</td>
+                </tr>
+                <tr className="accusative">
+                  <td>4.</td>
+                  <td>DAS</td>
+                  <td>EIN</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="card">
+            <table className="pulural">
+              <thead>
+                <th colSpan={2}>pulural</th>
+              </thead>
+              <tbody>
+                <tr className="nominative">
+                  <td>1.</td>
+                  <td>DIE</td>
+                </tr>
+                <tr className="genitive">
+                  <td>2.</td>
+                  <td>DER</td>
+                </tr>
+                <tr className="dative">
+                  <td>3.</td>
+                  <td>DEN</td>
+                </tr>
+                <tr className="accusative">
+                  <td>4.</td>
+                  <td>DIE</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div className="card">
-          <table className="neuter">
-            <thead>
-              <th colSpan={3}>neuter</th>
-            </thead>
-            <tbody>
-              <tr className="nominative">
-                <td>1.</td>
-                <td>DAS</td>
-                <td>EIN</td>
-              </tr>
-              <tr className="genitive">
-                <td>2.</td>
-                <td>DES (ES)</td>
-                <td>EINES (ES)</td>
-              </tr>
-              <tr className="dative">
-                <td>3.</td>
-                <td>DEM</td>
-                <td>EINEM</td>
-              </tr>
-              <tr className="accusative">
-                <td>4.</td>
-                <td>DAS</td>
-                <td>EIN</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className="card">
-          <table className="pulural">
-            <thead>
-              <th colSpan={2}>pulural</th>
-            </thead>
-            <tbody>
-              <tr className="nominative">
-                <td>1.</td>
-                <td>DIE</td>
-              </tr>
-              <tr className="genitive">
-                <td>2.</td>
-                <td>DER</td>
-              </tr>
-              <tr className="dative">
-                <td>3.</td>
-                <td>DEN</td>
-              </tr>
-              <tr className="accusative">
-                <td>4.</td>
-                <td>DIE</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-}
+      )}
       <div className="card-group">
         <div className="card">
           <table>
